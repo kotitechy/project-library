@@ -1,0 +1,29 @@
+
+{% extends 'layout.html' %}
+
+{% block title %}Upload Files - SecureStore{% endblock %}
+
+{% block content %}
+  <div class="upload-box">
+    <form class="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
+      <div class="upload-icon">
+        📄 <!-- Optional: Replace with SVG/icon -->
+      </div>
+      <label for="file-upload" class="custom-upload">
+        <span>➕ CHOOSE FILES</span>
+      </label>
+      <input id="file-upload" type="file" name="files" multiple required>
+
+      <p class="upload-text">or drop files here</p>
+      <button id="btnsub" type="submit">Upload</button>
+    </form>
+  </div>
+
+  {% if message %}
+    <script>alert('{{ message }}')</script>
+  {% endif %}
+
+  {% if error %}
+    <p style="color: red">{{ error }}</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}<link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+{% block title %}My Files - SecureStore{% endblock %}
+
+{% block content %}
+  <center><h3>My Files</h3></center>
+  <div class="content">
+    {% if files %}
+      {% for file in files %}
+        <a href="/download/{{ file.filename }}">
+          <div class="file-card">
+            <img src="data:{{ file.content_type }};base64,{{ file.base64_content }}" alt="{{ file.filename }}" />
+            <p>📄 {{ file.filename }}</p>
+            <small>Size: {{ file.size // 100 }}px</small>
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p style="text-align: center; color: gray;">No files uploaded yet.</p>
+    {% endif %}
+  </div>
+{% endblock %}
