@@ -1,0 +1,2 @@
+GEMINI ="AIzaSyAC9FKrqPTbuuAroSAjvVeUuxLG0vShmk0"
+PERPLEXITY = "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"

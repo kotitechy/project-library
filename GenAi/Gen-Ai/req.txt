@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+gtts
+pypdf
+google
+google-generativeai
+requests
+google.genai
+fastapi
+uvicorn
+pypdf
+langchain==0.1.13
+sentence-transformers
+faiss-cpu
+numpy
+google-generativeai
+
