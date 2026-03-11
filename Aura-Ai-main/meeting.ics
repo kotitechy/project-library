@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:ics.py - http://git.io/lLljaA
+BEGIN:VEVENT
+DESCRIPTION:Discuss project progress and next steps.
+DTEND:20250918T160000Z
+LOCATION:Conference Room A
+DTSTART:20250918T150000Z
+SUMMARY:Team Meeting
+UID:89bc1ea3-4cd6-48e3-a8c1-16463c1c1a08@89bc.org
+END:VEVENT
+END:VCALENDAR

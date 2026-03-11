@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+
+VERSION:2.0
+
+PRODID:ics.py - http://git.io/lLljaA
+
+BEGIN:VEVENT
+
+DESCRIPTION:looking for the Geeta project interns
+
+DTEND:20260818T140000Z
+
+LOCATION:India Hyderabad
+
+DTSTART:20260818T120000Z
+
+SUMMARY: talk with karthikeya
+
+UID:4fcfdaf1-b85f-47af-bfea-d343cea54884@4fcf.org
+
+END:VEVENT
+
+END:VCALENDAR

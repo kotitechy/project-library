@@ -1,0 +1,41 @@
+[2025-09-17 20:48:49] user: whats up buddy
+[2025-09-17 20:48:50] assistant: Here's what I found from our past conversations:
+[2025-09-17 20:48:49] user: whats up buddy
+name: hey there
+[2025-09-17 20:49:34] user: hi there how can you help me
+[2025-09-17 20:49:50] user: how can u help me
+[2025-09-17 20:49:50] assistant: Here's what I found from our past conversations:
+[2025-09-17 20:49:50] user: how can u help me
+[2025-09-17 20:49:34] user: hi there how can you help me
+name: hey there
+[2025-09-17 20:48:49] user: whats up buddy
+name: hey there
+[2025-09-17 20:49:57] user: so how can you help me hey there
+[2025-09-17 20:50:46] user: tiime
+[2025-09-17 20:50:46] assistant: Here's what I found from our past conversations:
+[2025-09-17 20:50:46] user: tiime
+name: hey there
+[2025-09-17 20:50:53] user: hello
+[2025-09-17 20:51:44] user: play song
+[2025-09-17 20:52:06] user: open google
+[2025-09-17 20:52:13] user: open google
+[2025-09-17 20:52:19] user: open whatsapp
+[2025-09-17 20:52:33] user: s
+[2025-09-17 20:52:34] assistant: Here's what I found from our past conversations:
+[2025-09-17 20:52:33] user: s
+[2025-09-17 20:52:19] user: open whatsapp
+[2025-09-17 20:52:13] user: open google
+[2025-09-17 20:52:06] user: open google
+name: hey there
+[2025-09-17 20:52:39] user: schedule and meeting
+[2025-09-17 20:52:39] assistant: Here's what I found from our past conversations:
+[2025-09-17 20:52:39] user: schedule and meeting
+name: hey there
+[2025-09-17 20:52:44] user: schedule meeting
+[2025-09-17 20:53:33] user: the time is 10
+[2025-09-17 20:53:34] assistant: Here's what I found from our past conversations:
+[2025-09-17 20:53:33] user: the time is 10
+name: hey there
+[2025-09-17 20:52:39] assistant: Here's what I found from our past conversations:
+name: hey there
+name: hey there
