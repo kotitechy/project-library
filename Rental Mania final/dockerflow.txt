@@ -1,0 +1,9 @@
+docker init
+enter details
+docker compose up --build
+docker build -t fastpi-app . 
+minikube docker-env
+docker build -t rental_mania-fastapi ./fastapi
+docker build -t rental_mania-react ./react
+kubectl delete pods --all
+& minikube -p minikube docker-env --shell powershell | Invoke-Expression
