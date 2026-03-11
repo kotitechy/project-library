@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, {{ username }}</h2>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <h3>Your Uploaded Documents</h3>
+    <table>
+      <tr>
+        <th>Filename</th>
+        <th>Status</th>
+        <th>Confidence</th>
+        <th>Uploaded On</th>
+      </tr>
+      {% for record in records %}
+      <tr>
+        <td>{{ record.filename }}</td>
+        <td>{{ record.status }}</td>
+        <td>{{ record.confidence }}</td>
+        <td>{{ record.date }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="{{ url_for('upload') }}">Upload New Document</a>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, {{ username }}</h2>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <h3>Your Uploaded Documents</h3>
+    <table>
+      <tr>
+        <th>Filename</th>
+        <th>Status</th>
+        <th>Confidence</th>
+        <th>Uploaded On</th>
+      </tr>
+      {% for record in records %}
+      <tr>
+        <td>{{ record.filename }}</td>
+        <td>{{ record.status }}</td>
+        <td>{{ record.confidence }}</td>
+        <td>{{ record.date }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="{{ url_for('upload') }}">Upload New Document</a>
+  </div>
+</body>
+</html>
