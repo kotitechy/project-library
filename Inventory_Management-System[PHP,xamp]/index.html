@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Billing Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .box {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+        .box:hover{
+            padding: 3px;
+            cursor: pointer;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <div class="container">
+        <div class="box" style="background: linear-gradient(to bottom right, #FF5733, #C70039);" id="employee"><a href="http://localhost/inventry_system/login.php">Employee</a></div>
+        <div class="box" style="background: linear-gradient(to bottom right, #33FF57, #39C700);" id="manager"><a href="http://localhost/inventry_system/manage.html">Manager</a></div>
+        <!-- <div class="box" style="background: linear-gradient(to bottom right, #3357FF, #0039C7);" id="developer"><a href="">Developer</a></div>
+        <div class="box" style="background: linear-gradient(to bottom right, #FFD700, #FF8C00);" id="admin"><a href="">Admin</a></div> -->
+        <div class="box">Get Help</div>
+    </div>
+
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function applyRandomGradients() {
+            const boxes = document.querySelectorAll('.box');
+            boxes.forEach(box => {
+                const color1 = getRandomColor();
+                const color2 = getRandomColor();
+                box.style.background = `linear-gradient(to bottom right, ${color1}, ${color2})`;
+            });
+        }
+
+        // Apply random gradients to boxes
+        applyRandomGradients();
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN LOGIN</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background-color: rgb(228, 226, 223);
+        }
+        body{
+            display: flex;
+            justify-content: center;
+        }
+        .container{
+            background-color: goldenrod;
+            width: 80vw;
+            height: 60vh;
+            margin-top: 20vh;
+        }
+        a,.form,ename{
+            background-color: transparent;
+            color:black;
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: x-large;
+        }
+        .form{
+            background-color: goldenrod;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="manage_emp.html">Manage Employee</a>
+        <button id="man" onclick="manage()">hello</button>
+        <div class="form">
+            <form action="admin.php" method="post">
+                <input type="text" name="ename" id="ename">
+                <button type="submit">Fetch Details</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function manage(){
+        a=document.getElementById('man')
+        man.innerHTML+= "<h1>HEllo</h1>"
+    }
+</script>
+</html>

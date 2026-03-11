@@ -1,0 +1,196 @@
+<?php
+require 'db_functions.php';
+session_start();
+//set employee name
+if (isset($_GET['user'])) {
+    $_SESSION['e_name']= htmlspecialchars($_GET['user']);
+}
+$e_name=$_SESSION['e_name'];
+
+// Initialize session variables if not already set
+if (!isset($_SESSION['items'])) {
+    $_SESSION['items'] = [];
+}
+
+$subtotal = 0;
+$u_name = '';
+$phno = '';
+
+// Add new user
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['cus_name'], $_POST['ps'])) {
+    $u_name = $_POST['cus_name'];
+    $phno = $_POST['ps'];
+    
+    // Insert new customer into the database
+    ins_customer($u_name, $phno);
+    
+    // Reset user and session items for new user
+    $u_name = '';
+    $phno = '';
+    $_SESSION['items'] = [];
+    $subtotal = 0;
+    $e_name=$_SESSION['e_name'];
+}
+
+// Add item to session 'items' array
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['item_name'], $_POST['item_price'], $_POST['qty'])) {
+    $item_name = $_POST['item_name'];
+    $item_price = $_POST['item_price'];
+    $qty = $_POST['qty'];
+    $total = $item_price * $qty;
+    
+    // Add item data to session
+    $_SESSION['items'][] = [
+        'item_name' => $item_name,
+        'item_price' => $item_price,
+        'qty' => $qty,
+        'total' => $total
+    ];
+    $e_name=$_SESSION['e_name'];
+}
+
+// Insert session items into the database
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['phone'])) {
+    foreach ($_SESSION['items'] as $item) {
+        ins_data($_POST['phone'], $item['item_name'], $item['item_price'], $item['qty'], $item['total'], $subtotal);
+    }
+    
+    $e_name=$_SESSION['e_name'];
+    // Optionally reset items after insertion
+    $_SESSION['items'] = [];
+}
+// logout
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['logout'])){
+    session_unset();
+    session_destroy();
+    header('Location: logout.html');
+    exit();
+}
+// logout
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['sale_a'])){
+    $url = "http://localhost/inventory_system/sale_a.php";
+
+// Output JavaScript to open the page in a new tab when the PHP script is executed
+echo "<script type='text/javascript'>
+    window.open('$url', '_blank');
+</script>";
+    $user = urlencode($e_name);
+    header("Location: sale_a.php?user=".$user);
+    header('Location: sale_a.php');
+}
+if($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST['clears'])){
+    $subtotal=0;
+    $_SESSION['items']=[];
+    $e_name=$_SESSION['e_name'];
+}
+// resset data
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Kirana and General Store</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <!-- Customer Details Section -->
+    <div class="customer-section">
+    <div class="c_s"><h2><span class="title">Kirana and General Store</span></h2></div>
+        <div class="c_s">
+        <form action="" method="post" style=''>
+        <h3><?php echo $e_name; ?></3>
+        <button type="submit" name='logout'>Logout</button>
+        </form>
+    </div>
+    <div class="c_s">
+        <form action="" method="post">
+        <button type="submit" name='sale_a'>Sale Analysis</button>
+        </form>
+    </div>
+
+        
+</div>
+    <!-- Main Part (Table) -->
+    <div class="table-container">
+        <table id="itemsTable">
+            
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody" style='max-height=50px'>
+                <!-- Dynamically added rows will appear here -->
+                <?php  
+                    if(isset($_SESSION['items']) && count($_SESSION['items']) > 0 ){
+                        $index=1;
+                        foreach($_SESSION['items'] as $item){
+                           $x =  ($item['item_price'] * $item['qty']);
+                           $subtotal+=$x;
+                        echo "
+                            <tr>
+                            <td>{$index}</td>
+                            <td>{$item['item_name']}</td>
+                            <td>{$item['qty']}</td>
+                            <td>{$item['item_price']}</td>
+                            <td>{$x}</td>
+                            </tr>";
+                            $index++;
+                        }
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <!-- Item Entry Section (at bottom of the window) -->
+    <div class="item-entry-section">
+        <hr>
+        <span id='new-c'>
+        <form action="index.php" method="post">
+            <h4>New</4>
+            <input type="text" id="cus_name" name="cus_name" placeholder="Customer Name" required>
+            <input type="tel" id="ps" name="ps" placeholder="Phone Number" required>
+            <button type="submit">Add Customer</button>
+        </form>
+        </span>
+        <hr>
+        <span>
+            <form action="index.php" method="post">
+                <h4>Add Items</5>
+                <input type="text" name="item_name" id="item_name" placeholder="Item Name">
+                <input type="number" name="item_price" id="item_price" placeholder="Price" min="0" step="0.5">
+                <input type="number" name="qty" id="qty" placeholder="Quantity" min="1">
+                
+                
+                <button type='submit'>Add Item</button>
+                <span class="subtotal-container" id="subtotalDisplay">Subtotal: ₹<?php echo $subtotal; ?></span>
+            </form>
+            <form action="" method="post">
+                <button type="submit" name="clears">Reset</button>
+            </form>
+
+        </span>
+        <hr>
+        <span>
+            <form action="index.php" method="post" id='dumpdata'>
+            <h4>Bill</4>
+                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required >
+                <button id='dumpdata' type='submit'>Paid</button>
+            </form>
+        </span>
+        <!-- <hr> -->
+        </div>
+    </body>
+    </html>
+    
