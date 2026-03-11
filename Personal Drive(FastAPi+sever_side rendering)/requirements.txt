@@ -1,0 +1,8 @@
+fastapi
+pymongo
+jinja2
+itsdangerous
+flask
+python-multipart
+uvicorn
+typing
